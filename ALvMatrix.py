@@ -37,3 +37,36 @@ class Graph1Matrix:
                       [0, 0, 0, 0, 0, 3, 0],
                       [0, 0, 0, 0, 0, 0, 0],
                       [0, 0, 0, 1, 0, 0, 0]]
+
+def printMatrix(graph):
+    for edge in graph.edges:
+        print(edge)
+
+def printList(graph):
+    for vert in graph.vertices:
+        print(vert, graph.vertices[vert])
+
+gm = GraphMatrix()
+gm.edges = []
+gm.edges.append([0, 0, 3, 2, 1, 0, 0])
+gm.edges.append([0, 0, 0, 0, 4, 0, 0])
+gm.edges.append([0, 1, 0, 0, 0, 0, 0])
+gm.edges.append([0, 0, 0, 0, 2, 0, 0])
+gm.edges.append([0, 0, 0, 0, 0, 3, 0])
+gm.edges.append([0, 0, 0, 0, 0, 0, 0])
+gm.edges.append([0, 0, 0, 1, 0, 0, 0])
+
+printMatrix(gm)
+
+gl = GraphList()
+gl.vertices = {
+    "A": {"B": 1},
+    "B": {"C": 3, "D": 2, "E": 1},
+    "C": {"E": 4},
+    "D": {"E": 2},
+    "E": {"F", 3},
+    "F": {},
+    "G": {"D": 1}
+}
+
+printList(gl)
