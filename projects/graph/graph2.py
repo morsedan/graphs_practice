@@ -194,14 +194,11 @@ class Graph:
             return path
         for neighbor in self.get_neighbors(path[-1]):
             if neighbor not in visited:
-                if neighbor == destination_vertex:
-                    return path.append(neighbor)
                 visited.add(neighbor)
                 new_path = path.copy()
                 new_path.append(neighbor)
                 self.dfs_recursive(neighbor, destination_vertex, new_path, visited)
-                path = new_path
-        return path
+        # return path
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
