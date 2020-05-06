@@ -145,6 +145,21 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
+        # Artem's enquing a tuple approach:
+        # neighbors_to_visit = Stack()
+        # visited_vertices = set()
+        # neighbors_to_visit.push((starting_vertex, []))
+        # while neighbors_to_visit.size() > 0:
+        #     current_vertex_plus_path = neighbors_to_visit.pop()
+        #     current_vertex = current_vertex_plus_path[0]
+        #     if current_vertex not in visited_vertices:
+        #         if current_vertex == destination_vertex:
+        #             updated_path = current_vertex_plus_path[1] + [current_vertex]
+        #             return updated_path
+        #         visited_vertices.add(current_vertex)
+        #         for neighbor in self.get_neighbors(current_vertex):
+        #             updated_path = current_vertex_plus_path[1] + [current_vertex]
+        #             neighbors_to_visit.push((neighbor, updated_path))
         # create a stack for paths to check
         paths_to_check = Stack()
         # push the starting_vertex onto the stack
@@ -183,9 +198,9 @@ class Graph:
         depth-first order.
         This should be done using recursion.
         """
-        print("PATH", path)
         if path is None:
             path = [starting_vertex]
+        print("PATH", path)
         if visited is None:
             visited = set()
         visited.add(starting_vertex)
@@ -197,7 +212,9 @@ class Graph:
                 visited.add(neighbor)
                 new_path = path.copy()
                 new_path.append(neighbor)
+                # path = new_path
                 self.dfs_recursive(neighbor, destination_vertex, new_path, visited)
+                # return path
         # return path
 
 if __name__ == '__main__':
