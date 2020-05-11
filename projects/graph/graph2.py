@@ -284,3 +284,25 @@ if __name__ == '__main__':
     '''
     print(graph.dfs(1, 6))
     print(graph.dfs_recursive(1, 6))
+
+import re
+class Thing:
+    def __init__(self, name, verification_format, decryption_key=None, method=None):
+        self.name = name
+        self.verification_format = re.compile(verification_format)
+        self.decryption_key = decryption_key
+        self.method = method
+
+    def verify(self, contact_id):
+        if re.match(self.verification_format, contact_id):
+            return True
+        else:
+            return False
+
+
+ver = "[a-z]{4}[0-9]{5,8}"
+
+thing = Thing("Hi", ver, decrypt_key="123456789", method="Hello")
+print(thing.name)
+print(thing.verify("help12345"))
+print(thing.method)
