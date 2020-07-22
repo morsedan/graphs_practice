@@ -40,28 +40,18 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-
-
-
         q = Queue()
+        q.enqueue(starting_vertex)
+
         visited = set()
 
-        q.enqueue(starting_vertex)
         while q.size() > 0:
             v = q.dequeue()
             if v not in visited:
                 print(v)
                 visited.add(v)
-                for edge in self.vertices[v]:
-                    q.enqueue(edge)
-
-
-            # for edge in self.vertices[vertex]:
-            #     if edge not in v:
-            #         q.enqueue(edge)
-            #
-            # print(vertex)
-            # v.add(vertex)
+                for next_vert in self.get_neighbors(v):
+                    q.enqueue(next_vert)
 
     def dft(self, starting_vertex):
         """
@@ -259,7 +249,7 @@ if __name__ == '__main__':
         1, 2, 4, 3, 7, 6, 5
         1, 2, 4, 3, 7, 5, 6
     '''
-    # graph.bft(1)
+    graph.bft(1)
 
     '''
     Valid DFT paths:
@@ -269,8 +259,8 @@ if __name__ == '__main__':
         1, 2, 4, 6, 3, 5, 7
     '''
     # graph.dft(1)
-    graph.dft_recursive(1)
-    graph.dft_recursive(1)
+    # graph.dft_recursive(1)
+    # graph.dft_recursive(1)
 
     '''
     Valid BFS path:
@@ -284,4 +274,4 @@ if __name__ == '__main__':
         [1, 2, 4, 7, 6]
     '''
     # print(graph.dfs(1, 6))
-    print(graph.dfs_recursive(1, 6))
+    # print(graph.dfs_recursive(1, 6))
